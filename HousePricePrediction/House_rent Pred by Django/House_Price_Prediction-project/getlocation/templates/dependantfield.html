@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>SELECT LOCATION </title>
+
+     <style>
+        /* Additional CSS Styles */
+        .btn-primary {
+            width: 200px; /* Adjust button width as needed */
+            height: 50px; /* Adjust button height as needed */
+        }
+
+        .margin-top-10 {
+            margin-top: 10px; /* Add margin from the top */
+        }
+
+            body {
+        background-color:#40E0D0;
+        background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+        font-family: 'Poppins', sans-serif;
+        height: 100vh;
+    }
+
+    .custom-button {
+            width: 200px; 
+            height: 55px; 
+            margin-top: 50px;
+        }
+       .increase-text-size {
+            font-size: 30px; /* Adjust the font size as needed */
+        }
+
+                h3.text-center {
+                color: #ffffff; /* Change to the desired text color */
+                margin-top: 5rem; /* Adjust margin top as needed */
+            }
+
+
+
+        .auth {
+    background-color: #000000;
+    display: inline-block;
+    position: absolute;
+    top: 25%;
+    right: 40%;
+    transform: translate(20%, -20%);
+    padding: 4rem;
+    border-radius: 0.5rem;
+    min-width: 70rem;
+    max-width: 100rem;
+}
+
+    </style>
+
+</head>
+<body>
+    <form  class="auth">
+        <div class="container mt-10" style="width:50%">
+            <h3 class="text-center mt-5 "> CHOOSE YOUR LOCATION  </h3>
+            <label for="country">Country</label>
+            <select class="form-select" aria-label="Default select example" id="country" onchange="countryfield()">
+                <option selected>Choose Country</option>
+                {% for i in country %}
+                    <option value="{{i.id}}" {% if request.GET.country == i.id|lower %}selected{% endif %}>{{i.name}}</option>
+                {% endfor %}
+            </select>
+            <br/>
+            <label for="division">Divisions</label>
+            <select class="form-select" aria-label="Default select example" id="division" onchange="divisionfield()">
+                <option selected>Choose Division</option>
+                {% for i in division %}
+                    <option value="{{i.id}}" {% if request.GET.division == i.id|lower %}selected{% endif %}>{{i.name}}</option>
+                {% endfor %}
+            </select>
+            <br/>
+            <label for="district">District</label>
+            <select class="form-select" aria-label="Default select example" id="district" onchange="districtfield()">
+                <option selected>Choose District</option>
+                {% for i in district %}
+                    <option value="{{i.id}}" {% if request.GET.district == i.id|lower %}selected{% endif %}>{{i.name}}</option>
+                {% endfor %}
+            </select>
+            <br/>
+
+            <label for="Upazila">Upazila</label>
+            <select class="form-select" aria-label="Default select example" id="upazila" >
+                <option selected>Choose Upazila</option>
+                {% for i in upazila %}
+                    <option value="{{i.id}}">{{i.name}}</option>
+                {% endfor %}
+            </select>
+            <br/>
+        </div>
+        <div class="text-center ">
+             <a href="{% url "predict" %}" class="btn btn-success custom-button  increase-text-size " >Click Here </a>
+        </div>
+
+    </form>
+<script>
+    function countryfield(){
+        var countryid = document.getElementById('country').value;
+        window.location = "/getlocation/dependantfield/?country="+countryid;
+    }
+    function divisionfield(){
+      var divisionid = document.getElementById('division').value;
+      var countryid = document.getElementById('country').value; // Get country ID from country dropdown
+      window.location = "/getlocation/dependantfield/?country=" + countryid + "&division=" + divisionid;
+    }
+    function districtfield(){
+      var districtid = document.getElementById('district').value;
+      var divisionid = document.getElementById('division').value;
+      var countryid = document.getElementById('country').value; 
+      window.location = "/getlocation/dependantfield/?country=" + countryid + "&division=" + divisionid  + "&district=" + districtid;
+    }
+
+    function districtfield(){
+      var districtid = document.getElementById('district').value;
+      var divisionid = document.getElementById('division').value;
+      var countryid = document.getElementById('country').value; 
+      window.location = "/getlocation/dependantfield/?country=" + countryid + "&division=" + divisionid  + "&district=" + districtid;
+    }
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

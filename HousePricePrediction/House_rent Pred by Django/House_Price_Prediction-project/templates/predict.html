@@ -1,0 +1,148 @@
+s<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;,">
+
+
+    <title>House Rent Prediction </title>
+
+    <script src="{% static "js/main.js" %}"> </script>
+    <script src="https://kit.fontawesome.com/1af3d7e4a4.js" crossorigin="anonymous" ></script>
+
+        <style>
+                        @import url('https://fonts.googleapis.com/css?family=Poppins');
+                * {
+                    box-sizing: border-box;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                html {
+                    font-size: 10px;
+                }
+
+                body {
+                    background-color: #0093E9;
+                    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+                    font-family: 'Poppins', sans-serif;
+                    height: 100vh;
+                }
+
+             .result-text {
+            font-size: 24px; /* Adjust the font size as needed */
+        }
+
+
+                .auth {
+                    background-color: #ffffff;
+                    display: inline-block;
+                    position: absolute;
+                    top: 25%;
+                    right: 40%;
+                    transform: translate(20%, -20%);
+                    padding: 2rem;
+                    border-radius: 0.5rem;
+                    min-width: 70rem;
+                    max-width: 89rem;
+                }
+
+                .auth h1 {
+                    font-size: 2.5rem;
+                    text-align: center;
+                    padding-bottom: 2rem;
+                    border-bottom: 0.1rem solid silver;
+                }
+
+                .auth form {
+                    margin: 1rem;
+                }
+
+                .auth input {
+                    width: 100%;
+                    margin-top: 2rem;
+                    height: 4rem;
+                    font-size: 1.4rem;
+                    border: none;
+                    border-bottom: 0.15rem solid rgb(163, 163, 163);
+                    padding: 0 0.5rem;
+                    outline: none;
+                }
+
+                .auth input:hover {
+                    border-bottom: 0.15rem solid #0086da;
+                }
+
+                .auth input::placeholder {
+                    color: rgb(163, 163, 163);
+
+                }
+
+                .auth form p {
+                    font-size: 1.3rem;
+                    padding: 3rem 0 0 0.5rem;
+                    color: rgb(163, 163, 163);
+                    font-weight: bold;
+                }
+
+                .auth form p:hover {
+                    color: rgb(80, 80, 80);
+                    cursor: pointer;
+                }
+
+                .auth input[type="submit"]{
+                    background-color: #000000;
+                    color: white;
+                    cursor: pointer;
+                    padding: 16px 32px;
+                }
+
+                .row h2.result2{
+                background-color: #000000;
+                color: white;
+                cursor: pointer;
+                padding: 40px 50px;
+                font-size: 1.8rem;
+                font-weight: bold;
+                margin-top: 280px; 
+                border-radius: 8px;
+                    }
+
+                
+
+        </style>
+</head>
+
+<body>
+    <section>
+        <div class="auth">
+            <h1 class="row " style="text-align:center; margin-top: 40px;  ">House Rent Prediction </h1>
+            <form action="result">
+                <input type="text" name="size" id="size" placeholder="Enter The Size " autocomplete="off" required>
+                <input type="text" name="room" id="room" placeholder="Enter Room Number " required>
+                <input type="text" name="total bathroom" id="total bathroom" placeholder="Enter Total Bathroom" required>
+                <input type="text" name="attached bathroom" id="attached bathroom" placeholder="Enter Attached Bathroom Number " required>
+                <input type="text" name="varanda" id="varanda" placeholder="Enter Varanda number " required>
+                <input type="text" name="dinning" id="dinning" placeholder="Enter Dinning number" required>
+                <input type="text" name="floor" id="floor" placeholder="Enter Floor number " required>
+                <input type="text" name="lift" id="lift" placeholder="Enter Lift number" required>
+                <input type="submit" value="PREDICT">
+                </br>
+                <div class="row" style="text-align:center; margin-top: 20px;">
+                      <h2 class="result-text" > {{result2}} </h2>
+                </div>
+            </form>
+            
+        </div>
+    </section>
+
+</body>
+
+</html>
